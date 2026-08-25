@@ -19,7 +19,12 @@ namespace ASP_Net_Core_MVC_Liberary.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var errorView = new ErrorViewModel
+            {
+                // Retrieve the error message from HttpContext.Items if available, otherwise use a default message
+                Message = HttpContext.Items["Message"]?.ToString() ?? "An error occurred."
+            };
+            return View(errorView);
         }
     }
 }

@@ -1,3 +1,5 @@
+using ASP_Net_Core_MVC_Liberary.Middlewares;
+using ASP_Net_Core_MVC_Liberary.Services;
 namespace ASP_Net_Core_MVC_Liberary
 {
     public class Program
@@ -8,6 +10,7 @@ namespace ASP_Net_Core_MVC_Liberary
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddHttpClient<IPokemonService, PokemonService>();
 
             var app = builder.Build();
 
@@ -20,8 +23,8 @@ namespace ASP_Net_Core_MVC_Liberary
             }
 
             app.UseHttpsRedirection();
+            app.UseMiddleware<ErrorMiddlewere>();
             app.UseRouting();
-
             app.UseAuthorization();
 
             app.MapStaticAssets();

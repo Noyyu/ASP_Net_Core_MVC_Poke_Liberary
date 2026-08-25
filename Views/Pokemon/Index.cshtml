@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PokemonListItem>
+@{
+    ViewData["Title"] = "Pokémon list - Index";
+}
+
+<h1>This will be a pokemon list</h1>
+    <ul>
+        @foreach(var pokemon in Model)
+        {
+            <li>
+                @pokemon.Name
+            </li>
+        }
+    </ul>
