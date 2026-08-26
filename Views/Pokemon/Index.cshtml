@@ -3,12 +3,128 @@
     ViewData["Title"] = "Pokémon list - Index";
 }
 
-<h1>This will be a pokemon list</h1>
-    <ul>
+<div class="pokemon-wrapper">
+    <h1 class="pokemon-introduktion">Pokemon List</h1>
+    <div class="search-wrapper">
+        <textarea class="textarea">Search Pokemon...</textarea>
+        <button class="button">Search</button>
+    </div>
+ 
+
+    <div class="pokemon-grid">
         @foreach(var pokemon in Model)
         {
-            <li>
-                @pokemon.Name
-            </li>
+            <a asp-controller="pokemon" asp-action="Details" asp-route-id="@pokemon.Id">
+                <div class="pokemon-card">
+
+                    <img class="pokemon-image" 
+                         src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/@(pokemon.Id).png"
+                         alt="@pokemon.Name"/>
+
+                    <span class="pokemon-title">@pokemon.Name</span>
+                </div>
+            </a>
         }
-    </ul>
+    </div>
+</div>
+
+
+
+<style>
+    .pokemon-wrapper{
+        max-width: 65rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pokemon-introduktion{
+        padding-top: 1rem;
+    }
+    .search-wrapper{
+        display: flex;
+        align-items: center; /* Centrerar dem i höjdled med varandra */
+        gap: 0.5rem; /* Lite mellanrum mellan fältet och knappen */
+        margin-bottom: 1rem;
+    }
+
+    .pokemon-grid{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .pokemon-card{
+        border: 0.1rem;
+        border-radius:1rem;
+        background: rgb(200,230,255,0.5);
+        padding: 1rem;
+        text-align: center;
+        width: 20rem;
+        transition:transform 0.3s ease, box-shadow 0.3s ease;
+        cursor:pointer;
+    }
+    .pokemon-card:hover{
+        transform: scale(1.05);
+        box-shadow: 0 1rem 1.4rem rgb(0,0,0,0.1);
+    }
+    .pokemon-image{
+        width: 18rem;
+        height: 18rem;
+        margin: 0 auto 1rem auto;
+        align-items: center;
+        object-fit:contain;
+        justify-content: center;
+        image-rendering:pixelated;
+    }
+    .pokemon-title{
+        font-size: 2rem;
+        color: rgb(100,130,155,1);
+        font-family:Bahnschrift;
+        text-transform:capitalize;
+    }
+
+    .textarea {
+        resize:none !important;
+        width: 15rem;
+        height: 3rem;
+        padding: 0.75rem 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 0.9rem;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .textarea:focus {
+        outline: none;
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+        background-color: #fff;
+    }
+
+    .button {
+        height: 2.5rem;
+        width: 5rem; 
+        border: none;
+        border-radius: 8px;
+        background-color: #4a90e2;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .button:hover {
+        background-color: #357abd;
+        transform: translateY(-2px); /* Lyfter knappen lite lätt vid hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .button:active {
+        transform: translateY(0); /* Trycks ner när man klickar */
+    }
+
+</style>

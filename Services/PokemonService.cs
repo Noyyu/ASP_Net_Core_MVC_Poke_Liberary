@@ -30,5 +30,20 @@ namespace ASP_Net_Core_MVC_Liberary.Services
                 return null;
             }
         }
+
+        public async Task<PokemonDetails?> GetPokemonDetails(int Id)
+        {
+            try
+            {
+                string url = $"https://pokeapi.co/api/v2/pokemon/{Id}";
+                var response = await _httpClient.GetFromJsonAsync<PokemonDetails>(url);
+                return response;
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "Could not get the pokemon details");
+                return null;
+            }
+        }
     }
 }

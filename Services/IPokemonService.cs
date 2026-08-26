@@ -5,5 +5,6 @@ namespace ASP_Net_Core_MVC_Liberary.Services
     public interface IPokemonService
     {
         Task<List<PokemonListItem>?> GetAllPokemonAsync();
+        Task<PokemonDetails?> GetPokemonDetails(int Id);
     }
 }

@@ -17,7 +17,20 @@ namespace ASP_Net_Core_MVC_Liberary.Controllers
         public async Task<IActionResult> Index()
         {
             var pokemonList = await _pokemonService.GetAllPokemonAsync();
+            if (pokemonList == null)
+            {
+                return NotFound();
+            }
             return View(pokemonList);
+        }
+        public async Task<IActionResult> Details(int Id)
+        {
+            var pokemonDetails = await _pokemonService.GetPokemonDetails(Id);
+            if(pokemonDetails == null)
+            {
+                return NotFound();
+            }
+            return View(pokemonDetails);
         }
 
     }
