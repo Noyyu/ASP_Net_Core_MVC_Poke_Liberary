@@ -1,4 +1,5 @@
-﻿using ASP_Net_Core_MVC_Liberary.Services;
+﻿using ASP_Net_Core_MVC_Liberary.Models;
+using ASP_Net_Core_MVC_Liberary.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP_Net_Core_MVC_Liberary.Controllers
@@ -25,12 +26,29 @@ namespace ASP_Net_Core_MVC_Liberary.Controllers
         }
         public async Task<IActionResult> Details(int Id)
         {
-            var pokemonDetails = await _pokemonService.GetPokemonDetails(Id);
+            var pokemonDetails = await _pokemonService.GetPokemonDetailsAsync(Id);
             if(pokemonDetails == null)
             {
                 return NotFound();
             }
             return View(pokemonDetails);
+        }
+
+        public async Task<IActionResult> Search(string search)
+        {
+            var pokemonFound = await _pokemonService.GetPokemon(search);
+            if (pokemonFound == null)
+            {
+                return NotFound();
+            }
+            return View("index", pokemonFound);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> LoadMore(int offset)
+        {
+            var pokemons = await _pokemonService.GetMorePokemonAsync(offset);
+            return PartialView("_PokemonCardList", pokemons);
         }
 
     }

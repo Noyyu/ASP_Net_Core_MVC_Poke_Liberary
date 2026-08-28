@@ -10,6 +10,7 @@ namespace ASP_Net_Core_MVC_Liberary
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddMemoryCache(); //So i can save the names of the pokemon on the server memory.
             builder.Services.AddHttpClient<IPokemonService, PokemonService>();
 
             var app = builder.Build();
@@ -30,7 +31,7 @@ namespace ASP_Net_Core_MVC_Liberary
             app.MapStaticAssets();
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}")
+                pattern: "{controller=pokemon}/{action=Index}/{id?}")
                 .WithStaticAssets();
 
             app.Run();

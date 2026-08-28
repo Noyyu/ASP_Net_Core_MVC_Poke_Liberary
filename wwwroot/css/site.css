@@ -1,31 +1,181 @@
 html {
   font-size: 14px;
 }
+.pokemon-wrapper {
+    max-width: 65rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pokemon-introduktion {
+    padding-top: 1rem;
+}
+
+.search-wrapper {
+    display: flex;
+    align-items: center; 
+    gap: 0.5rem; 
+    margin-bottom: 1rem;
+}
+
+.pokemon-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.pokemon-card {
+    border: 0.1rem;
+    border-radius: 1rem;
+    background: rgb(200,230,255,0.5);
+    padding: 1rem;
+    text-align: center;
+    width: 20rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none !important;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1rem 1.4rem rgb(0,0,0,0.1);
+}
+
+.pokemon-stat-card-wrapper {
+    font-family: Bahnschrift;
+    background-color: rgb(200, 230, 255, 0.5);
+    border-radius: 1rem;
+    display: flex;
+    width: 42rem;
+    text-decoration:none !important;
+}
+
+.pokemon-image {
+    width: 18rem;
+    height: 18rem;
+    margin: 0 auto 1rem auto;
+    align-items: center;
+    object-fit: contain;
+    justify-content: center;
+    image-rendering: pixelated;
+}
+
+.pokemon-title {
+    font-size: 2rem;
+    color: #4a90e2;
+    font-family: Bahnschrift;
+    text-transform: capitalize;
+    text-decoration:none !important;
+}
+
+.pokemon-details-img{
+    margin: 1rem;
+    height: 20rem;
+    width: 20rem;
+    image-rendering:pixelated;
+    object-fit:contain;
+}
+
+.pokemon-stat-wrapper {
+    background: #ffffff8e;
+    padding:1rem;
+    border-radius: 1rem;
+    text-transform: capitalize;
+    margin: 1rem;
+}
+
+.pokemon-stat-card-title {
+    color: #4a90e2;
+    margin: 0rem;
+    padding: 0rem;
+}
+
+.pokemon-id {
+    margin: 0rem;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #4a90e289;
+}
+
+.pokemon-stat-text {
+    white-space: nowrap;
+    padding-right: 0.5rem;
+    font-size: 1.5rem;
+    color: #4a90e2b6;
+}
+
+.pokemon-stat-number {
+    color: #4a90e2;
+}
+
+.pokemon-type-wrapper {
+    background-color: #afd4ff;
+    width: 16rem;
+    padding: 1rem 0.6rem 4rem 0.6rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    display: inline-flex;
+    gap: 0.3rem;
+}
+.pokemon-type-item {
+    text-transform: capitalize;
+    color:aliceblue;
+    text-align:center;
+    padding:0.4rem;
+    font-size:1rem;
+    border-radius: 1rem;
+    background: #4a90e2; 
+    height:2rem;
+    width: 7rem;
+}
+
+.textarea {
+    resize: none !important;
+    width: 15rem;
+    height: 3rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+    background-color: #fff;
+}
+
+.button {
+    height: 2.5rem;
+    width: 5rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.button:hover {
+    background-color: #357abd;
+    transform: translateY(-2px); /* Lyfter knappen lite lätt vid hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    transform: translateY(0); /* Trycks ner när man klickar */
+}
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
-
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    html {
+        font-size: 16px;
+    }
 }

@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ASP_Net_Core_MVC_Liberary.Models.PokemonListItem>
+
+
+@foreach (var pokemon in Model)
+{
+    <a asp-controller="pokemon" asp-action="Details" asp-route-id="@pokemon.Id">
+        <div class="pokemon-card">
+
+            <img class="pokemon-image"
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/@(pokemon.Id).png"
+                    alt="@pokemon.Name" />
+
+            <span class="pokemon-title">@pokemon.Name</span>
+        </div>
+    </a>
+}

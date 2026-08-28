@@ -1,7 +1,21 @@
 ﻿@model PokemonDetails;
-<h1>Details</h1>
-<h2>@Model.Id</h2>
-<h2>@Model.Name</h2>
-<h2>@Model.Type</h2>
-<h2>@Model.Height</h2>
-<h2>@Model.Weight</h2>
+<div class="pokemon-wrapper">
+    <div class="pokemon-stat-card-wrapper">
+        <img class="pokemon-details-img"
+             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/@(Model.Id).png"
+             alt="@Model.Name" />
+        <div class="pokemon-stat-wrapper">
+            <h1 class="pokemon-stat-card-title">@Model.Name</h1>
+            <h2 class="pokemon-id">Id: @Model.Id</h2>
+            <h2> <span class="pokemon-stat-text">Height:</span><span class="pokemon-stat-number">@Model.Height</span></h2>
+            <h2> <span class="pokemon-stat-text">Weight:</span><span class="pokemon-stat-number">@Model.Weight</span></h2>
+            <div class="pokemon-type-wrapper">
+                @foreach (var type in Model.Types)
+                {
+                    <h3 class="pokemon-type-item">@type.Type.Name</h3>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
