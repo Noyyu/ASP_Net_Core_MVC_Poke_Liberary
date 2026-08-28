@@ -1,3 +1,75 @@
+.type-normal {
+    background-color: #A8A878 !important;
+}
+
+.type-fire {
+    background-color: #F08030 !important;
+}
+
+.type-water {
+    background-color: #6890F0 !important;
+}
+
+.type-electric {
+    background-color: #F8D030 !important;
+}
+
+.type-grass {
+    background-color: #78C850 !important;
+}
+
+.type-ice {
+    background-color: #98D8D8 !important;
+}
+
+.type-fighting {
+    background-color: #C03028 !important;
+}
+
+.type-poison {
+    background-color: #A040A0 !important;
+}
+
+.type-ground {
+    background-color: #E0C068 !important;
+}
+
+.type-flying {
+    background-color: #A890F0 !important;
+}
+
+.type-psychic {
+    background-color: #F85888 !important;
+}
+
+.type-bug {
+    background-color: #A8B820 !important;
+}
+
+.type-rock {
+    background-color: #B8A038 !important;
+}
+
+.type-ghost {
+    background-color: #705898 !important;
+}
+
+.type-dragon {
+    background-color: #7038F8 !important;
+}
+
+.type-dark {
+    background-color: #705848 !important;
+}
+
+.type-steel {
+    background-color: #B8B8D0 !important;
+}
+
+.type-fairy {
+    background-color: #EE99AC !important;
+}
+
 html {
   font-size: 14px;
 }
@@ -12,17 +84,24 @@ html {
 }
 
 .search-wrapper {
+    text-decoration: none !important;
     display: flex;
-    align-items: center; 
-    gap: 0.5rem; 
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 1rem;
 }
 
 .pokemon-grid {
+    text-decoration: none !important;
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-top: 1rem;
+}
+
+.pokemon-grid a {
+    text-decoration: none !important;
+    color: inherit !important;
 }
 
 .pokemon-card {
@@ -62,11 +141,14 @@ html {
 }
 
 .pokemon-title {
+    background-color: #00000049;
+    padding: 0.7rem;
+    border-radius:1rem;
     font-size: 2rem;
-    color: #4a90e2;
+    color: #fff;
     font-family: Bahnschrift;
     text-transform: capitalize;
-    text-decoration:none !important;
+    text-decoration: none !important;
 }
 
 .pokemon-details-img{
@@ -78,7 +160,7 @@ html {
 }
 
 .pokemon-stat-wrapper {
-    background: #ffffff8e;
+    background: #00000049;
     padding:1rem;
     border-radius: 1rem;
     text-transform: capitalize;
@@ -86,7 +168,7 @@ html {
 }
 
 .pokemon-stat-card-title {
-    color: #4a90e2;
+    color: #fff;
     margin: 0rem;
     padding: 0rem;
 }
@@ -95,22 +177,22 @@ html {
     margin: 0rem;
     margin-bottom: 1rem;
     font-size: 2rem;
-    color: #4a90e289;
+    color: #ffffff89;
 }
 
 .pokemon-stat-text {
     white-space: nowrap;
     padding-right: 0.5rem;
     font-size: 1.5rem;
-    color: #4a90e2b6;
+    color: #ffffffb6;
 }
 
 .pokemon-stat-number {
-    color: #4a90e2;
+    color: #ffffff;
 }
 
 .pokemon-type-wrapper {
-    background-color: #afd4ff;
+    background-color: #0000006b;
     width: 16rem;
     padding: 1rem 0.6rem 4rem 0.6rem;
     border-radius: 1rem;

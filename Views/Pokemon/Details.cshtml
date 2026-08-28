@@ -1,6 +1,13 @@
 ﻿@model PokemonDetails;
+
+@{
+    // Hämtar den primära typen
+    var mainType = Model.Types?.FirstOrDefault()?.Type?.Name;
+}
+
 <div class="pokemon-wrapper">
-    <div class="pokemon-stat-card-wrapper">
+    <!-- Lägger till typ-klassen (t.ex. type-grass) dynamiskt -->
+    <div class="pokemon-stat-card-wrapper type-@mainType">
         <img class="pokemon-details-img"
              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/@(Model.Id).png"
              alt="@Model.Name" />
@@ -10,12 +17,15 @@
             <h2> <span class="pokemon-stat-text">Height:</span><span class="pokemon-stat-number">@Model.Height</span></h2>
             <h2> <span class="pokemon-stat-text">Weight:</span><span class="pokemon-stat-number">@Model.Weight</span></h2>
             <div class="pokemon-type-wrapper">
-                @foreach (var type in Model.Types)
+                @if (Model.Types != null)
                 {
-                    <h3 class="pokemon-type-item">@type.Type.Name</h3>
+                    foreach (var type in Model.Types)
+                    {
+                        <!-- Ger även de små ikonerna sin specifika färg -->
+                        <h3 class="pokemon-type-item type-@(type.Type?.Name)">@type.Type?.Name</h3>
+                    }
                 }
             </div>
         </div>
     </div>
 </div>
-

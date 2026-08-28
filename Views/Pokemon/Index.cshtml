@@ -10,34 +10,55 @@
             <button type="submit" class="button">Search</button>
 
         </form>
-    <div class="pokemon-grid"> <partial name="_PokemonCardList" model="Model"> </div>
+    <div id="pokemon-grid" class="pokemon-grid"> <partial name="_PokemonCardList" model="Model"> </div>
     <div id="scroll-trigger" style="height: 20px;"></div>
 </div>
+
+
 <script>
-    let offset = 20; // Vi antar att du laddade 20 från början
+    let offset = 151;
     const trigger = document.getElementById('scroll-trigger');
     const grid = document.getElementById('pokemon-grid');
 
+    //Gets the type colors
+    async function loadColors() {
+        // Gets the cards that does nto have a color
+        const cards = document.querySelectorAll('.pokemon-card:not(.color-loaded)');
+
+        for (const card of cards) {
+            card.classList.add('color-loaded'); // Make sure not to load it twice
+            const id = card.getAttribute('data-id');
+
+            // Get the type from the API
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+            if (response.ok) {
+                const data = await response.json();
+                const mainType = data.types[0].type.name; // Gets the primary type
+                card.classList.add(`type-${mainType}`); // Adds the color by type (Its in the CSS file)
+            }
+        }
+    }
+
+    // Runs the funktion for the first 151 cards. 
+    loadColors();
+
     const observer = new IntersectionObserver(async (entries) => {
-        // Om triggern syns på skärmen
         if (entries[0].isIntersecting) {
 
-            // Hämta HTML från din LoadMore-action
+            if (window.location.search.includes('search=')) return;
             const response = await fetch(`/Pokemon/LoadMore?offset=${offset}`);
 
             if (response.ok) {
                 const html = await response.text();
-
-                // Stoppa in de nya korten i botten av listan
                 grid.insertAdjacentHTML('beforeend', html);
-
-                // Öka offseten inför nästa laddning
                 offset += 20;
+
+                // Run it again for the newwly loaded cards
+                loadColors();
             }
         }
     });
 
-    // Starta övervakningen
     observer.observe(trigger);
 </script>
 
